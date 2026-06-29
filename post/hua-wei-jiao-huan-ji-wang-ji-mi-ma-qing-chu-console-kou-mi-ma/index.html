@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>华为交换机忘记密码，清除Console口密码 | Lemom笔记</title>
+<meta name="description" content="网络实验、工具探索、记录思考">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.lemom.cn/favicon.ico?v=1782724524320">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://blog.lemom.cn/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CV1974WBV5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CV1974WBV5');
+</script>
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://blog.lemom.cn">
+        <img class="avatar" src="https://blog.lemom.cn/images/avatar.png?v=1782724524320" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://blog.lemom.cn">
+        <h1 class="site-title">Lemom笔记</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://blog.lemom.cn/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+        
+          <a href="https://blog.lemom.cn/post/lian-xi-fang-shi" class="menu purple-link">
+            联系方式
+          </a>
+        
+      
+        
+          <a href="https://blog.lemom.cn/post/testtest" class="menu purple-link">
+            留言反馈
+          </a>
+        
+      
+        
+          <a href="https://blog.lemom.cn/member/" class="menu purple-link">
+            查询Test
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+            <div class="feature-container" style="background-image: url('https://blog.lemom.cn/post-images/hua-wei-jiao-huan-ji-wang-ji-mi-ma-qing-chu-console-kou-mi-ma.png')">
+            </div>
+          
+          <h2 class="post-title">华为交换机忘记密码，清除Console口密码</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2026-06-01</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://blog.lemom.cn/tag/UzXf5k1y_6/">
+                    华为交换机
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content" v-pre>
+            <p>1、通过Console口连接交换机。将Console通信电缆的DB9（孔）插头插入PC机的COM口中，再将RJ-45插头端插入设备的Console口中，如图22-2所示。<br>
+图22-2 通过Console口链接设备<br>
+<img src="https://blog.lemom.cn/post-images/1780305786532.png" alt="" loading="lazy"><br>
+2、在PC上打开终端仿真软件，新建连接，设置连接的接口，配置通信参数如下：<br>
+波特率：9600<br>
+数据位：8<br>
+停止位：1<br>
+奇偶校验位：无<br>
+流控：无</p>
+<p>3、重启交换机。当界面出现以下打印信息时，及时按下快捷键“Ctrl+B”或者“Ctrl+E”并输入BootROM/BootLoad密码，进入BootROM/BootLoad主菜单。<br>
+Press Ctrl+B or Ctrl+E to enter BootROM/BootLoad menu ... 2<br>
+password:      //输入BootROM/BootLoad密码  （默认密码：Admin@huawei.com）</p>
+<p>4、在BootROM/BootLoad主菜单下选择“Clear password for console user”清除Console口登录密码。<br>
+5、根据交换机的提示，在BootROM/BootLoad主菜单下选择“Boot with default mode”启动设备。<br>
+6、完成系统启动后，通过Console口登录时不需要认证，登录后按照系统提示配置验证密码。（V200R009及之后版本，完成系统启动后，通过Console口登录时认证方式为None，系统启动后不会提示配置验证密码。）<br>
+7、登录交换机后，您可以根据需要修改Console用户界面的认证方式及密码。修改Console口登录的密码请参考方法一的2。<br>
+8、为了防止重启后配置丢失，保存配置。<br>
+<HUAWEI> save<br>
+The current configuration will be written to the device.<br>
+Are you sure to continue?[Y/N]y<br>
+Now saving the current configuration to the slot 0.<br>
+Save the configuration successfully.</p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://blog.lemom.cn/post/hua-wei-s5700-jiao-huan-ji-kai-qi-telnet-yuan-cheng-deng-lu-pei-zhi/">
+              <h3 class="post-title">
+                下一篇：华为S5700交换机开启telnet远程登陆配置
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
+      
+
+      <div class="site-footer">
+  <div class="slogan">网络实验、工具探索、记录思考</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+        <a href="https://blog.lemom.cn" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | © 2025 Lemom | <a href="https://blog.lemom.cn">blog.lemom.cn</a> | <a class="rss" href="https://blog.lemom.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'Ov23liYCwt8l5Kq8jtRA',
+        clientSecret: 'c903ba588a3c9cc0853640db35140cc1a360550b',
+        repo: 'blog-comments',
+        owner: 'alancccbbb',
+        admin: ['alancccbbb'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

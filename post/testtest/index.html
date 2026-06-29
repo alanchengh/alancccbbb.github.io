@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>留言反馈 | Lemom笔记</title>
+<meta name="description" content="网络实验、工具探索、记录思考">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.lemom.cn/favicon.ico?v=1782724524320">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://blog.lemom.cn/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CV1974WBV5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CV1974WBV5');
+</script>
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://blog.lemom.cn">
+        <img class="avatar" src="https://blog.lemom.cn/images/avatar.png?v=1782724524320" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://blog.lemom.cn">
+        <h1 class="site-title">Lemom笔记</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://blog.lemom.cn/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+        
+          <a href="https://blog.lemom.cn/post/lian-xi-fang-shi" class="menu purple-link">
+            联系方式
+          </a>
+        
+      
+        
+          <a href="https://blog.lemom.cn/post/testtest" class="menu purple-link">
+            留言反馈
+          </a>
+        
+      
+        
+          <a href="https://blog.lemom.cn/member/" class="menu purple-link">
+            查询Test
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">留言反馈</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2025-04-24</span>
+            
+          </div>
+          <div class="post-content" v-pre>
+            <form action="https://formsubmit.co/7b6afb328de6d9b615c07a4d1d55fad1" method="POST">
+  <!-- 隐藏字段配置 -->
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_autoresponse" value="✅ 我们已收到您的留言，谢谢！">
+  <input type="hidden" name="_subject" value="💬 博客新留言通知">
+  <input type="hidden" name="_next" value="https://blog.lemom.cn/OK.html">
+  <!-- 📍 定位信息隐藏字段 -->
+  <input type="hidden" name="定位信息" id="locationField">
+  <!-- 第一组：称呼 / 微信/电话/邮箱 -->
+  <div style="display: flex; flex-wrap: wrap; margin-bottom: 1mm;">
+    <div style="flex: 1; min-width: 250px; margin-right: 1mm;">
+      <input type="text" name="称呼" placeholder="称呼（必填）" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;">
+    </div>
+    <div style="flex: 1; min-width: 250px;">
+      <input type="text" name="微信/电话/邮箱" placeholder="微信/电话/邮箱（选填）" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; background-color: #ffe066;">
+    </div>
+  </div>
+  <!-- 第二组：所在城市 / 工作职位 -->
+  <div style="display: flex; flex-wrap: wrap; margin-bottom: 1mm;">
+    <div style="flex: 1; min-width: 250px; margin-right: 1mm;">
+      <input type="text" name="所在城市" placeholder="所在城市（必填）" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;">
+    </div>
+    <div style="flex: 1; min-width: 250px;">
+      <input type="text" name="工作职位" placeholder="工作职位（选填）" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;">
+    </div>
+  </div>
+  <!-- 第三组：技术领域 / 技术背景 -->
+  <div style="display: flex; flex-wrap: wrap; margin-bottom: 1mm;">
+    <div style="flex: 1; min-width: 250px; margin-right: 1mm;">
+      <select name="技术领域" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;">
+        <option value="">请选择您关注的技术领域</option>
+        <option value="网络安全">网络安全</option>
+        <option value="云计算">云计算</option>
+        <option value="大数据">大数据</option>
+        <option value="物联网">物联网</option>
+        <option value="人工智能">人工智能</option>
+      </select>
+    </div>
+    <div style="flex: 1; min-width: 250px;">
+      <select name="技术背景" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;">
+        <option value="">请选择您的技术背景/身份</option>
+        <option value="初学者">初学者</option>
+        <option value="在校生">在校生</option>
+        <option value="网络工程师">网络工程师</option>
+        <option value="安全从业者">安全从业者</option>
+        <option value="其他">其他</option>
+      </select>
+    </div>
+  </div>
+  <!-- 感兴趣的技术方向 -->
+  <div style="margin-bottom: 10px;">
+    <label>感兴趣的技术方向（多选）</label>
+    <div style="padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;">
+      <label><input type="checkbox" name="感兴趣的技术方向" value="VPN"> VPN</label><br>
+      <label><input type="checkbox" name="感兴趣的技术方向" value="软路由"> 软路由</label><br>
+      <label><input type="checkbox" name="感兴趣的技术方向" value="OpenWRT"> OpenWRT</label><br>
+      <label><input type="checkbox" name="感兴趣的技术方向" value="防火墙"> 防火墙</label><br>
+      <label><input type="checkbox" name="感兴趣的技术方向" value="Docker"> Docker</label><br>
+      <label><input type="checkbox" name="感兴趣的技术方向" value="Tailscale"> Tailscale</label><br>
+      <label><input type="checkbox" name="感兴趣的技术方向" value="Headscale"> Headscale</label><br>
+      <label><input type="checkbox" name="感兴趣的技术方向" value="其他"> 其他</label><br>
+      <input type="text" name="其他技术方向" placeholder="请输入其它感兴趣的技术方向" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; margin-top: 5px;">
+    </div>
+  </div>
+  <!-- 想看的内容 -->
+  <div style="margin-bottom: 10px;">
+    <textarea name="想看的教程/文章主题" placeholder="想看的教程/文章主题" rows="4" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;"></textarea>
+  </div>
+  <!-- 反馈 -->
+  <div style="margin-bottom: 10px;">
+    <textarea name="对本站文章的反馈" placeholder="对本站文章的反馈" rows="4" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;"></textarea>
+  </div>
+  <!-- 提交按钮 -->
+  <div style="text-align: center; padding-top: 15px;">
+    <button type="submit" style="padding: 10px 30px; font-size: 16px; background-color: #ffe066; color: #000; border: 1px solid #ffe066; border-radius: 6px;">发送</button>
+  </div>
+</form>
+<!-- 📍 定位脚本：生成经纬度 -->
+<script>
+  window.onload = function () {
+    const locField = document.getElementById("locationField");
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        const lat = position.coords.latitude.toFixed(6);
+        const lng = position.coords.longitude.toFixed(6);
+        locField.value = `纬度: ${lat}, 经度: ${lng}`;
+      }, function (error) {
+        locField.value = "定位失败：" + error.message;
+      });
+    } else {
+      locField.value = "浏览器不支持定位功能";
+    }
+  };
+</script>
+
+          </div>
+        </div>
+
+        
+      </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
+      
+
+      <div class="site-footer">
+  <div class="slogan">网络实验、工具探索、记录思考</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+        <a href="https://blog.lemom.cn" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | © 2025 Lemom | <a href="https://blog.lemom.cn">blog.lemom.cn</a> | <a class="rss" href="https://blog.lemom.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'Ov23liYCwt8l5Kq8jtRA',
+        clientSecret: 'c903ba588a3c9cc0853640db35140cc1a360550b',
+        repo: 'blog-comments',
+        owner: 'alancccbbb',
+        admin: ['alancccbbb'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

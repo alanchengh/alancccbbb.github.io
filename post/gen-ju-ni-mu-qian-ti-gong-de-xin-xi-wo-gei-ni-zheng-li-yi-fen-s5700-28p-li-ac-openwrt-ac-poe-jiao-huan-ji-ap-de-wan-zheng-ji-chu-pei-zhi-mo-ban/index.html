@@ -1,0 +1,466 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>根据你目前提供的信息，我给你整理一份 S5700-28P-LI-AC + OpenWrt + AC + PoE交换机 + AP 的完整基础配置模板。 | Lemom笔记</title>
+<meta name="description" content="网络实验、工具探索、记录思考">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.lemom.cn/favicon.ico?v=1782724524320">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://blog.lemom.cn/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CV1974WBV5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CV1974WBV5');
+</script>
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://blog.lemom.cn">
+        <img class="avatar" src="https://blog.lemom.cn/images/avatar.png?v=1782724524320" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://blog.lemom.cn">
+        <h1 class="site-title">Lemom笔记</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="https://blog.lemom.cn/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+        
+          <a href="https://blog.lemom.cn/post/lian-xi-fang-shi" class="menu purple-link">
+            联系方式
+          </a>
+        
+      
+        
+          <a href="https://blog.lemom.cn/post/testtest" class="menu purple-link">
+            留言反馈
+          </a>
+        
+      
+        
+          <a href="https://blog.lemom.cn/member/" class="menu purple-link">
+            查询Test
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+            <div class="feature-container" style="background-image: url('https://blog.lemom.cn/post-images/gen-ju-ni-mu-qian-ti-gong-de-xin-xi-wo-gei-ni-zheng-li-yi-fen-s5700-28p-li-ac-openwrt-ac-poe-jiao-huan-ji-ap-de-wan-zheng-ji-chu-pei-zhi-mo-ban.jpeg')">
+            </div>
+          
+          <h2 class="post-title">根据你目前提供的信息，我给你整理一份 S5700-28P-LI-AC + OpenWrt + AC + PoE交换机 + AP 的完整基础配置模板。</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2026-06-28</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://blog.lemom.cn/tag/UzXf5k1y_6/">
+                    华为交换机
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content" v-pre>
+            <p>一、网络规划</p>
+<p>VLAN10    Office       192.168.10.0/24<br>
+VLAN20    Finance      192.168.20.0/24<br>
+VLAN30    Printer      192.168.30.0/24<br>
+VLAN40    CCTV         192.168.40.0/24<br>
+VLAN60    Guest WiFi   192.168.60.0/24<br>
+VLAN99    Manage       192.168.99.0/24<br>
+VLAN254   Transit      192.168.254.0/30</p>
+<p>二、S5700配置</p>
+<p>进入系统视图：<br>
+system-view</p>
+<p>创建VLAN<br>
+vlan batch 10 20 30 40 60 99 254</p>
+<p>创建网关接口</p>
+<p>办公<br>
+interface Vlanif10<br>
+ip address 192.168.10.1 255.255.255.0<br>
+dhcp select global</p>
+<p>财务<br>
+interface Vlanif20<br>
+ip address 192.168.20.1 255.255.255.0<br>
+dhcp select global</p>
+<p>打印机<br>
+interface Vlanif30<br>
+ip address 192.168.30.1 255.255.255.0<br>
+dhcp select global</p>
+<p>监控<br>
+interface Vlanif40<br>
+ip address 192.168.40.1 255.255.255.0<br>
+dhcp select global</p>
+<p>Guest<br>
+interface Vlanif60<br>
+ip address 192.168.60.1 255.255.255.0<br>
+dhcp select global</p>
+<p>管理<br>
+interface Vlanif99<br>
+ip address 192.168.99.1 255.255.255.0</p>
+<p>Transit<br>
+interface Vlanif254<br>
+ip address 192.168.254.2 255.255.255.252</p>
+<p>默认路由<br>
+ip route-static 0.0.0.0 0 192.168.254.1</p>
+<p>三、DHCP</p>
+<p>开启DHCP：<br>
+dhcp enable</p>
+<p>VLAN10<br>
+ip pool VLAN10<br>
+network 192.168.10.0 mask 255.255.255.0<br>
+gateway-list 192.168.10.1<br>
+excluded-ip-address 192.168.10.2 192.168.10.10<br>
+dns-list 202.96.128.86 202.96.128.166 8.8.8.8<br>
+lease day 0 hour 12 minute 0</p>
+<p>VLAN20<br>
+ip pool VLAN20<br>
+network 192.168.20.0 mask 255.255.255.0<br>
+gateway-list 192.168.20.1<br>
+excluded-ip-address 192.168.20.2 192.168.20.10<br>
+dns-list 202.96.128.86 202.96.128.166 8.8.8.8<br>
+lease day 0 hour 12 minute 0</p>
+<p>VLAN30<br>
+ip pool VLAN30<br>
+network 192.168.30.0 mask 255.255.255.0<br>
+gateway-list 192.168.30.1<br>
+excluded-ip-address 192.168.30.2 192.168.30.10<br>
+dns-list 202.96.128.86 202.96.128.166 8.8.8.8<br>
+lease day 0 hour 12 minute 0</p>
+<p>VLAN40<br>
+ip pool VLAN40<br>
+network 192.168.40.0 mask 255.255.255.0<br>
+gateway-list 192.168.40.1<br>
+excluded-ip-address 192.168.40.2 192.168.40.10<br>
+dns-list 202.96.128.86 202.96.128.166 8.8.8.8<br>
+lease day 0 hour 12 minute 0</p>
+<p>VLAN60<br>
+ip pool VLAN60<br>
+network 192.168.60.0 mask 255.255.255.0<br>
+gateway-list 192.168.60.1<br>
+excluded-ip-address 192.168.60.2 192.168.60.10<br>
+dns-list 202.96.128.86 202.96.128.166 8.8.8.8<br>
+lease day 0 hour 12 minute 0</p>
+<p>四、端口规划<br>
+G0/0/1-10 办公<br>
+interface range GigabitEthernet0/0/1 to GigabitEthernet0/0/10<br>
+port link-type access<br>
+port default vlan 10</p>
+<p>G0/0/11-15 财务<br>
+interface range GigabitEthernet0/0/11 to GigabitEthernet0/0/15<br>
+port link-type access<br>
+port default vlan 20</p>
+<p>G0/0/16-18 打印机<br>
+interface range GigabitEthernet0/0/16 to GigabitEthernet0/0/18<br>
+port link-type access<br>
+port default vlan 30</p>
+<p>G0/0/19-22 摄像头<br>
+interface range GigabitEthernet0/0/19 to GigabitEthernet0/0/22<br>
+port link-type access<br>
+port default vlan 40</p>
+<p>G0/0/24 上联PoE交换机<br>
+interface GigabitEthernet0/0/24<br>
+port link-type trunk<br>
+port trunk allow-pass vlan 10 60 99</p>
+<p>G0/0/25 AC<br>
+interface GigabitEthernet0/0/25<br>
+port link-type access<br>
+port default vlan 99</p>
+<p>G0/0/28 OpenWrt<br>
+interface GigabitEthernet0/0/28<br>
+port link-type access<br>
+port default vlan 254</p>
+<p>五、Guest WiFi隔离</p>
+<p>ACL：<br>
+acl number 3001<br>
+rule 5 deny ip source 192.168.60.0 0.0.0.255 destination 192.168.10.0 0.0.0.255<br>
+rule 10 deny ip source 192.168.60.0 0.0.0.255 destination 192.168.20.0 0.0.0.255<br>
+rule 15 deny ip source 192.168.60.0 0.0.0.255 destination 192.168.30.0 0.0.0.255<br>
+rule 20 deny ip source 192.168.60.0 0.0.0.255 destination 192.168.40.0 0.0.0.255<br>
+rule 25 deny ip source 192.168.60.0 0.0.0.255 destination 192.168.99.0 0.0.0.255<br>
+rule 30 deny ip source 192.168.60.0 0.0.0.255 destination 192.168.254.0 0.0.0.3<br>
+rule 100 permit ip</p>
+<p>绑定：<br>
+interface Vlanif60<br>
+traffic-filter inbound acl 3001</p>
+<p>六、管理员访问管理网</p>
+<p>管理员电脑：<br>
+192.168.10.100</p>
+<p>ACL：<br>
+acl number 3002<br>
+rule 5 permit ip source 192.168.10.100 0 destination 192.168.99.0 0.0.0.255<br>
+rule 10 deny ip source 192.168.10.0 0.0.0.255 destination 192.168.99.0 0.0.0.255<br>
+rule 100 permit ip</p>
+<p>绑定：<br>
+interface Vlanif10<br>
+traffic-filter inbound acl 3002</p>
+<p>七、OpenWrt配置</p>
+<p>LAN接口：<br>
+IP:<br>
+192.168.254.1<br>
+MASK:<br>
+255.255.255.252</p>
+<p>关闭DHCP：<br>
+网络<br>
+→ 接口<br>
+→ LAN<br>
+→ DHCP服务器<br>
+→ 忽略此接口</p>
+<p>OpenWrt静态路由<br>
+添加：<br>
+192.168.10.0/24 -&gt; 192.168.254.2<br>
+192.168.20.0/24 -&gt; 192.168.254.2<br>
+192.168.30.0/24 -&gt; 192.168.254.2<br>
+192.168.40.0/24 -&gt; 192.168.254.2<br>
+192.168.60.0/24 -&gt; 192.168.254.2<br>
+192.168.99.0/24 -&gt; 192.168.254.2</p>
+<p>八、管理IP建议</p>
+<p>S5700            192.168.99.1<br>
+PoE交换机        192.168.99.2<br>
+AC               192.168.99.10<br>
+AP1              192.168.99.101<br>
+AP2              192.168.99.102<br>
+AP3              192.168.99.103</p>
+<p>部署完成后，建议执行：<br>
+save<br>
+display current-configuration</p>
+<p>并导出配置备份。这样后续增加 NAS、服务器、更多 AP 时，只需新增 VLAN 和 ACL，不需要重构网络。</p>
+<p>下级还有一台二层交换机呢？</p>
+<p>情况1：二层交换机下面只有一种业务（最简单）<br>
+例如整个二层交换机下面都是办公电脑：</p>
+<p>二层交换机<br>
+├─ PC<br>
+├─ PC<br>
+├─ PC</p>
+<p>那么 S5700 到二层交换机：</p>
+<p>interface GigabitEthernet0/0/23<br>
+port link-type access<br>
+port default vlan 10</p>
+<p>整个交换机下面：<br>
+全部 VLAN10</p>
+<p>情况2：二层交换机下面有多种业务（推荐）</p>
+<p>二层交换机<br>
+├─ PC        VLAN10<br>
+├─ 财务PC    VLAN20<br>
+├─ 打印机    VLAN30</p>
+<p>那么：</p>
+<p>S5700上联口<br>
+interface GigabitEthernet0/0/23<br>
+port link-type trunk<br>
+port trunk allow-pass vlan 10 20 30 40 99</p>
+<p>二层交换机上联口<br>
+interface GigabitEthernet0/0/1<br>
+port link-type trunk<br>
+port trunk allow-pass vlan 10 20 30 40 99</p>
+<p>二层交换机用户口</p>
+<p>办公电脑：<br>
+interface GigabitEthernet0/0/2<br>
+port link-type access<br>
+port default vlan 10</p>
+<p>财务：<br>
+interface GigabitEthernet0/0/3<br>
+port link-type access<br>
+port default vlan 20</p>
+<p>打印机：<br>
+interface GigabitEthernet0/0/4<br>
+port link-type access<br>
+port default vlan 30</p>
+<p>监控：<br>
+interface GigabitEthernet0/0/5<br>
+port link-type access<br>
+port default vlan 40</p>
+<p>管理IP怎么配？<br>
+如果二层交换机支持管理（Web/SSH）：</p>
+<p>例如：<br>
+管理VLAN = 99<br>
+IP = 192.168.99.3<br>
+GW = 192.168.99.1</p>
+<p>华为一般：<br>
+vlan 99<br>
+interface Vlanif99<br>
+ip address 192.168.99.3 255.255.255.0</p>
+<p>默认网关：<br>
+ip route-static 0.0.0.0 0 192.168.99.1<br>
+或者部分型号是：<br>
+ip default-gateway 192.168.99.1</p>
+<p>注意 VLAN254<br>
+二层交换机上联 Trunk：<br>
+port trunk allow-pass vlan 10 20 30 40 99<br>
+不要带：<br>
+VLAN254<br>
+因为：<br>
+VLAN254<br>
+仅用于<br>
+OpenWrt<br>
+↔<br>
+S5700</p>
+<p>VLAN99<br>
+存在：<br>
+S5700<br>
+PoE交换机<br>
+二层交换机<br>
+AC<br>
+AP</p>
+<!-- more -->
+<p>VLAN10/20/30/40/60<br>
+按需下发到接入交换机和AP<br>
+这是比较规范的企业拓扑。这样以后再增加第三台、第四台交换机，也只是继续从 S5700 拉 Trunk 口下去，不需要改核心设计。</p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://blog.lemom.cn/post/hua-wei-jiao-huan-ji-xiu-gai-console-kou-mi-ma/">
+              <h3 class="post-title">
+                下一篇：华为交换机修改Console口密码
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
+      
+
+      <div class="site-footer">
+  <div class="slogan">网络实验、工具探索、记录思考</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+        <a href="https://blog.lemom.cn" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | © 2025 Lemom | <a href="https://blog.lemom.cn">blog.lemom.cn</a> | <a class="rss" href="https://blog.lemom.cn/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'Ov23liYCwt8l5Kq8jtRA',
+        clientSecret: 'c903ba588a3c9cc0853640db35140cc1a360550b',
+        repo: 'blog-comments',
+        owner: 'alancccbbb',
+        admin: ['alancccbbb'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

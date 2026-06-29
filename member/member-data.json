@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1001",
+    "name": "张三",
+    "gender": "男",
+    "phone": "13800000000",
+    "email": "zhangsan@example.com",
+    "level": "黄金会员",
+    "joinDate": "2023-05-01",
+    "address": "北京市朝阳区",
+    "note": "VIP客户，已续费至2025年",
+    "avatar": "https://blog.lemom.cn/images/hy/1001.jpg"
+  },
+  {
+    "id": "1002",
+    "name": "李四",
+    "gender": "女",
+    "phone": "13900000000",
+    "email": "lisi@example.com",
+    "level": "白银会员",
+    "joinDate": "2022-11-15",
+    "address": "上海市浦东新区",
+    "note": "VIP客户，已续费至2026年",
+    "avatar": "https://blog.lemom.cn/images/hy/1002.jpg"
+  }
+]
